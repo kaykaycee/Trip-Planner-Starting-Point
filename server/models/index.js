@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize');
-// const db = new Sequelize('postgres://localhost:5432/trip_planner', { logging: false });
-const db = new Sequelize('trip_planner','postgres','', {
-    host: 'localhost',
-    dialect: 'postgres',
-    logging: false
-})
+const db = new Sequelize('postgres://localhost:5432/trip_planner', { logging: false });
+// const db = new Sequelize('trip_planner','postgres','', {
+//     host: 'localhost',
+//     dialect: 'postgres',
+//     logging: false
+// })
 
 const Place = db.define('place', {
 	address: {

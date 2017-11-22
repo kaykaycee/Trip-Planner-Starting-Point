@@ -4,16 +4,16 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const db = require('./models').db;
-
-app.set('view engine', 'html');
+const apiRouter = require('./api');
 
 app.use(morgan('dev'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname + '../public')));
-app.use(express.static(path.join(__dirname + '../node_modules')));
+app.use(express.static('public'));
+
+app.use('/api', apiRouter);
 
 // catch 404 (i.e., no route was hit) and forward to error handler
 app.use(function(req, res, next) {
