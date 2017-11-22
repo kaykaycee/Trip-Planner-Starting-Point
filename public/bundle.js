@@ -552,6 +552,63 @@ const map = new mapboxgl.Map({
 const marker = buildMarker("activities", fullstackCoords);
 marker.addTo(map);
 
+fetch('/api')
+  .then(resStream => resStream.json())
+  .then(dataFromBackend => {
+    let select = document.getElementById('hotels-choices')
+    dataFromBackend.hotels.forEach(hotel => {
+      let option = document.createElement('option');
+      option.innerHTML = `${hotel.name}`
+      option.value = `${hotel.id}`
+      select.append(option)
+    })
+    return dataFromBackend;
+  })
+  .then(dataFromBackend => {
+    let select = document.getElementById('restaurants-choices')
+    dataFromBackend.restaurants.forEach(restaurant => {
+      let option = document.createElement('option');
+      option.innerHTML = `${restaurant.name}`
+      option.value = `${restaurant.id}`
+      select.append(option)
+    })
+    return dataFromBackend;
+  })
+  .then(dataFromBackend => {
+    let select = document.getElementById('activities-choices')
+    dataFromBackend.activities.forEach(activity => {
+      let option = document.createElement('option');
+      option.innerHTML = `${activity.name}`
+      option.value = `${activity.id}`
+      select.append(option)
+    })
+  })
+  .catch(console.error.bind(console))
+
+document.getElementById('hotels-add')
+	.addEventListener('click', () => {
+		//
+	})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /***/ }),
 /* 2 */
